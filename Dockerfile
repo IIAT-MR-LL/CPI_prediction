@@ -19,18 +19,24 @@ RUN wget --quiet https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-x86_6
 #Anaconda3 End
 
 #RDKIT Begin
-
 RUN conda create  -y  -c rdkit -n my-rdkit-env rdkit
 RUN conda init bash
 #RUN conda activate my-rdkit-env
-#
 ##RDKIT END
 
 
+
+
+
 USER root
+#Jupyter config begin
+COPY ./jupyter  /root/.jupyter
+#Jupyter config end
+
+
+### APP Begin ######
 RUN mkdir   -p /app
 WORKDIR     /app
-
 COPY requirements.txt /app/
 RUN . /opt/conda/etc/profile.d/conda.sh && \
        conda activate my-rdkit-env && \
@@ -44,3 +50,5 @@ RUN chmod +x /app/bin/*.sh
 
 EXPOSE 8888
 CMD [ "/app/bin/batch.sh"]
+
+#ENTRYPOINT ["jupyter", "notebook", "--allow-root"]

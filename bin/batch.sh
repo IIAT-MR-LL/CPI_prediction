@@ -1,9 +1,15 @@
 #!/bin/bash
 cd "$(dirname "$0")"
-cd ../code
+cd ..
+cur_path="$(pwd)"
 
 . /opt/conda/etc/profile.d/conda.sh
 conda activate my-rdkit-env
 
-bash preprocess_data.sh
-bash run_training.sh
+cd ./code
+#bash preprocess_data.sh
+bash run_training.sh &
+
+#Set up jupyter
+cd $cur_path
+jupyter notebook --allow-root
