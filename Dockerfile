@@ -37,16 +37,17 @@ COPY ./jupyter  /root/.jupyter
 ### APP Begin ######
 RUN mkdir   -p /app
 WORKDIR     /app
-COPY requirements.txt /app/
+COPY requirements*.txt /app/
+
+RUN . /opt/conda/etc/profile.d/conda.sh && \
+       conda activate my-rdkit-env && \
+       pip install -r /app/requirements_core.txt -i  https://mirrors.aliyun.com/pypi/simple/
+
 RUN . /opt/conda/etc/profile.d/conda.sh && \
        conda activate my-rdkit-env && \
        pip install -r /app/requirements.txt -i  https://mirrors.aliyun.com/pypi/simple/
 
 
-COPY ./bin  /app/bin
-COPY ./code /app/code
-
-#RUN chmod +x /app/bin/*.sh
 
 EXPOSE 8888
 CMD [ "/app/bin/batch.sh"]

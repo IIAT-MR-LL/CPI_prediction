@@ -5,6 +5,8 @@ cur_path="$(pwd)"
 
 . /opt/conda/etc/profile.d/conda.sh
 conda activate my-rdkit-env
+python -m ipykernel install --name rdkit --display-name "rdkit-env"
+#
 
 cd ./code
 #bash preprocess_data.sh

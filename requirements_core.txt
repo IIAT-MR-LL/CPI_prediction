@@ -1,0 +1,16 @@
+scikit-learn
+configparser
+h5py
+nibabel
+nilearn
+numpy==1.17.2
+opencv-python
+pytest
+scikit-image==0.13.0
+scipy
+tensorboardx
+tensorflow-gpu==1.13.1
+tensorflow==1.13.1
+torch==1.3.0
+torchvision
+
