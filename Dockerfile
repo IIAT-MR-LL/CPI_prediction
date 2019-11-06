@@ -46,7 +46,7 @@ RUN . /opt/conda/etc/profile.d/conda.sh && \
 COPY ./bin  /app/bin
 COPY ./code /app/code
 
-RUN chmod +x /app/bin/*.sh
+#RUN chmod +x /app/bin/*.sh
 
 EXPOSE 8888
 CMD [ "/app/bin/batch.sh"]
