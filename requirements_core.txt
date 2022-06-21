@@ -3,7 +3,7 @@ configparser
 h5py
 nibabel
 nilearn
-numpy==1.17.2
+numpy==1.22.0
 opencv-python
 pytest
 scikit-image==0.13.0
